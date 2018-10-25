@@ -18,7 +18,7 @@ public class MissionDemolition : MonoBehaviour
     [Header("Set in Inspector")]
     public Text uitLevel;
     public Text uitShots;
-    //public Text uitHighScore;
+    public Text uitScore;
     public Text uitButton;
     public Vector3 castlePos;
     public GameObject[] castles;
@@ -38,6 +38,11 @@ public class MissionDemolition : MonoBehaviour
         level = 0;
         levelMax = castles.Length;
         StartLevel();
+    }
+
+    void Awake()
+    {
+        
     }
 
     void StartLevel()
