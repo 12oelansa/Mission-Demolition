@@ -410,7 +410,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -421,7 +421,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Least Shots: '
+  m_Text: 'Shots to Beat: 0'
 --- !u!222 &383135546
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -717,8 +717,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uitLevel: {fileID: 1134038105}
   uitShots: {fileID: 1379513813}
-  uitScore: {fileID: 0}
   uitButton: {fileID: 1192747}
+  uitScore: {fileID: 383135545}
   castlePos: {x: 50, y: -9.5, z: 0}
   castles:
   - {fileID: 1205536642387828, guid: cec4a660d80396c4da8b6414b5d35453, type: 2}

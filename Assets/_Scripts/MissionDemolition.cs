@@ -12,14 +12,17 @@ public enum GameMode
 
 public class MissionDemolition : MonoBehaviour
 {
+
     static private MissionDemolition S;
-    static public int score = 1;
+    static public int score0 = 15;
+    static public int score1 = 20;
+    static public int score2 = 25;
 
     [Header("Set in Inspector")]
     public Text uitLevel;
     public Text uitShots;
-    public Text uitScore;
     public Text uitButton;
+    public Text uitScore;
     public Vector3 castlePos;
     public GameObject[] castles;
 
@@ -42,7 +45,23 @@ public class MissionDemolition : MonoBehaviour
 
     void Awake()
     {
-        
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            score0 = PlayerPrefs.GetInt("HighScore");
+        }
+        PlayerPrefs.SetInt("HighScore", score0);
+
+        if (PlayerPrefs.HasKey("HighScore1"))
+        {
+            score1 = PlayerPrefs.GetInt("HighScore1");
+        }
+        PlayerPrefs.SetInt("HighScore1", score1);
+
+        if (PlayerPrefs.HasKey("HighScore2"))
+        {
+            score2 = PlayerPrefs.GetInt("HighScore2");
+        }
+        PlayerPrefs.SetInt("HighScore2", score2);
     }
 
     void StartLevel()
@@ -72,16 +91,60 @@ public class MissionDemolition : MonoBehaviour
         mode = GameMode.playing;
     }
 
-    void UpdateGUI()
+    public void UpdateGUI()
     {
 
         uitLevel.text = "Level: " + (level + 1) + " of " + levelMax;
         uitShots.text = "Shots Taken: " + shotsTaken;
+
+        if (level == 0)
+        {
+            uitScore.text = "Shots to Beat: " + score0;
+        }
+
+        if (level == 1)
+        {
+            uitScore.text = "Shots to Beat: " + score1;
+        }
+
+        if (level == 2)
+        {
+            uitScore.text = "Shots to Beat: " + score2;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // sets the new highscore if play shots is less than 
+        // playerprefs value, this also changes depending on level.
+        if (level == 0)
+        {
+            if (shotsTaken < PlayerPrefs.GetInt("HighScore") && Goal.goalMet)
+            {
+                PlayerPrefs.SetInt("HighScore", shotsTaken);
+                uitScore.text = "Shots to Beat: " + shotsTaken;
+            }
+        }
+
+        if (level == 1)
+        {
+            if (shotsTaken < PlayerPrefs.GetInt("HighScore1") && Goal.goalMet)
+            {
+                PlayerPrefs.SetInt("HighScore1", shotsTaken);
+                uitScore.text = "Shots to Beat: " + shotsTaken;
+            }
+        }
+
+        if (level == 2)
+        {
+            if (shotsTaken < PlayerPrefs.GetInt("HighScore2") && Goal.goalMet)
+            {
+                PlayerPrefs.SetInt("HighScore2", shotsTaken);
+                uitScore.text = "Shots to Beat: " + shotsTaken;
+            }
+        }
+
         UpdateGUI();
 
         if ((mode == GameMode.playing) && Goal.goalMet)
@@ -89,6 +152,7 @@ public class MissionDemolition : MonoBehaviour
             mode = GameMode.levelEnd;
             SwitchView("Show Both");
             Invoke("NextLevel", 2f);
+
         }
     }
 
@@ -99,6 +163,7 @@ public class MissionDemolition : MonoBehaviour
         {
             level = 0;
         }
+
         StartLevel();
     }
 
