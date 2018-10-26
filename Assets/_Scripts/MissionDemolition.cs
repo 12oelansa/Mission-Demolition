@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Author: Omar Elansary
+// CSC476
+// Mission Demolition
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +16,6 @@ public enum GameMode
 
 public class MissionDemolition : MonoBehaviour
 {
-
     static private MissionDemolition S;
     static public int score0 = 15;
     static public int score1 = 20;
@@ -33,7 +36,7 @@ public class MissionDemolition : MonoBehaviour
     public GameObject castle;
     public GameMode mode = GameMode.idle;
     public string showing = "Show Slingshot";
-
+ 
     // Use this for initialization
     void Start()
     {
@@ -44,7 +47,7 @@ public class MissionDemolition : MonoBehaviour
     }
 
     void Awake()
-    {
+    {      
         if (PlayerPrefs.HasKey("HighScore"))
         {
             score0 = PlayerPrefs.GetInt("HighScore");
@@ -61,7 +64,7 @@ public class MissionDemolition : MonoBehaviour
         {
             score2 = PlayerPrefs.GetInt("HighScore2");
         }
-        PlayerPrefs.SetInt("HighScore2", score2);
+        PlayerPrefs.SetInt("HighScore2", score2);      
     }
 
     void StartLevel()
@@ -116,6 +119,7 @@ public class MissionDemolition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(score1);
         // sets the new highscore if play shots is less than 
         // playerprefs value, this also changes depending on level.
         if (level == 0)
@@ -162,6 +166,9 @@ public class MissionDemolition : MonoBehaviour
         if (level == levelMax)
         {
             level = 0;
+            // gets and sets the previously saved highscores, 
+            // otherwise they would reset to the default highscores on new game.
+            Awake();
         }
 
         StartLevel();

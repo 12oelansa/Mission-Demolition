@@ -66,10 +66,11 @@
     <Compile Include="Assets\_Scripts\FollowCam.cs" />
     <Compile Include="Assets\_Scripts\Goal.cs" />
     <Compile Include="Assets\_Scripts\MissionDemolition.cs" />
+    <Compile Include="Assets\_Scripts\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\ProjectileLine.cs" />
     <Compile Include="Assets\_Scripts\RigidbodySleep.cs" />
-    <Compile Include="Assets\_Scripts\ScoreLevel0.cs" />
     <Compile Include="Assets\_Scripts\Slingshot.cs" />
+    <Compile Include="Assets\_Scripts\UIManager.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/popco/Documents/Mission-Demolition/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Author: Omar Elansary
+// CSC476
+// Mission Demolition
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
